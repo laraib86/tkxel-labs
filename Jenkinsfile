@@ -11,12 +11,12 @@ pipeline {
 
     stage('Build Docker Image') {
 			steps {
-				dir('tkxel-labs'){
+				//dir('tkxel-labs'){
 					sh 'docker build -t sannan1357/backend:${BUILD_NUMBER} .'
                     sh 'docker container run --rm -p 8081:8081 --name backend -d sannan1357/backend:${BUILD_NUMBER}' 
 				    sh 'sleep 5'
 				    sh 'curl -I http://localhost:8081'
-				}
+				//}
 			} 
 		}
 	}
