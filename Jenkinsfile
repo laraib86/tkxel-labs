@@ -9,6 +9,16 @@ pipeline {
           }
       }
 
+    stage('SonarQube Analysis') {
+			steps {
+		   sh 'sonar-scanner \
+                -Dsonar.projectKey=Lab1 \
+                -Dsonar.sources=. \
+                -Dsonar.host.url=http://localhost:9000 \
+                -Dsonar.login=857a291b7d2aa7f0a85e42e29db721d69c84a8dc'
+			} 
+		}
+
     stage('Build Docker Image') {
 			steps {
 		   sh 'docker build -t sannan1357/backend:${BUILD_NUMBER} .'
