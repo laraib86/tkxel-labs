@@ -1,9 +1,10 @@
-FROM python:3.6-alpine
+FROM node:10-alpine
 
-RUN pip install flask
-
-COPY app.py /
+# Create app directory
+WORKDIR /app
 
 EXPOSE 8081
 
-CMD [ "python", "./app.py" ]
+COPY index.js ./
+
+CMD [ "node", "index.js" ]
